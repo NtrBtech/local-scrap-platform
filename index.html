@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#126b45">
+  <title>Local Scrap | Doorstep Scrap Pickup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Local Scrap home">
+      <span class="brand-mark">↻</span>
+      <span><strong>LOCAL SCRAP</strong><small>Khammam doorstep pickup</small></span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="#how">How it works</a><a href="#materials">Scrap categories</a><a href="#rates">Indicative rates</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-outline" id="adminOpen">Admin</button>
+      <button class="btn btn-primary" id="bookTop">Book a pickup</button>
+    </div>
+  </header>
+
+  <main id="customerView">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">CLEANER KHAMMAM STARTS AT HOME</span>
+        <h1>Turn your scrap<br><em>into value.</em></h1>
+        <p>Sell recyclable scrap from your home, shop or office. Schedule a convenient doorstep pickup and get paid after weighing.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" id="bookHero">Schedule free pickup <span>→</span></button>
+          <a class="text-link" href="#how">See how it works</a>
+        </div>
+        <div class="trust-row"><span>✓ Doorstep collection</span><span>✓ Weighing transparency</span><span>✓ Cash / UPI payment</span></div>
+      </div>
+      <div class="hero-art">
+        <div class="art-circle"></div>
+        <div class="art-card">
+          <div class="art-icon">♻</div>
+          <div class="art-label">Give scrap a<br><b>second life</b></div>
+          <div class="material-pills"><span>Paper</span><span>Metal</span><span>Plastic</span></div>
+        </div>
+        <div class="floating-tag tag-one">♧ Responsible recycling</div>
+        <div class="floating-tag tag-two">📍 Serving Khammam</div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>Simple</strong><span>Easy booking</span></div>
+      <div><strong>Transparent</strong><span>Final weight & rate shared</span></div>
+      <div><strong>Local</strong><span>Khammam collection area</span></div>
+    </section>
+
+    <section class="section" id="materials">
+      <div class="section-heading"><div><span class="eyebrow">WHAT WE COLLECT</span><h2>Choose your scrap</h2></div><p>Select one or more materials while booking. Final acceptance depends on condition and local demand.</p></div>
+      <div class="material-grid" id="materialGrid"></div>
+    </section>
+
+    <section class="rate-section" id="rates">
+      <div class="section-heading"><div><span class="eyebrow">START WITH AN ESTIMATE</span><h2>Indicative scrap rates</h2></div><p>Rates are sample placeholders for the demo. Confirm current rates with the business before publishing.</p></div>
+      <div class="rate-table-wrap">
+        <table><thead><tr><th>Material</th><th>Indicative buying rate</th><th>Unit</th></tr></thead><tbody id="rateRows"></tbody></table>
+      </div>
+      <p class="fineprint">Actual price is confirmed at pickup based on grade, cleanliness, quantity and prevailing market conditions. No guaranteed rate is implied.</p>
+    </section>
+
+    <section class="how-section" id="how">
+      <div class="section-heading centered"><span class="eyebrow">HOW IT WORKS</span><h2>Scrap pickup in 4 easy steps</h2></div>
+      <div class="steps">
+        <article><span>01</span><div class="step-icon">▤</div><h3>Select scrap</h3><p>Choose the materials you want to sell and share an estimated quantity.</p></article>
+        <article><span>02</span><div class="step-icon">⌖</div><h3>Book a pickup</h3><p>Enter your contact details, address and preferred collection slot.</p></article>
+        <article><span>03</span><div class="step-icon">⚖</div><h3>We weigh it</h3><p>Our collection team checks the material and records the actual weight.</p></article>
+        <article><span>04</span><div class="step-icon">₹</div><h3>Get paid</h3><p>Receive the confirmed amount through cash or UPI and get a receipt.</p></article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div><span class="eyebrow">READY TO CLEAR THE CLUTTER?</span><h2>Your unused scrap could be worth something.</h2><p>Book a doorstep pickup in Khammam.</p></div>
+      <button class="btn btn-light btn-large" id="bookBottom">Book a pickup →</button>
+    </section>
+  </main>
+
+  <section class="admin-view hidden" id="adminView">
+    <div class="admin-header"><div><span class="eyebrow">BUSINESS OPERATIONS</span><h1>Admin dashboard</h1><p>Demo dashboard · bookings are stored in this browser only</p></div><button class="btn btn-outline" id="backToSite">← Customer website</button></div>
+    <div class="dashboard-cards">
+      <div class="metric"><span>Total bookings</span><strong id="metricBookings">0</strong><small>All submitted requests</small></div>
+      <div class="metric"><span>Pending</span><strong id="metricPending">0</strong><small>Awaiting confirmation</small></div>
+      <div class="metric"><span>Collected</span><strong id="metricCollected">0</strong><small>Collection completed</small></div>
+      <div class="metric"><span>Paid amount</span><strong id="metricPaid">₹0</strong><small>Recorded in this demo</small></div>
+    </div>
+    <div class="admin-panel">
+      <div class="panel-heading"><div><h2>Pickup requests</h2><p>Review requests and update their status.</p></div><button class="btn btn-outline" id="exportCsv">Export CSV ↓</button></div>
+      <div class="table-scroll"><table><thead><tr><th>Booking</th><th>Customer</th><th>Scrap</th><th>Pickup</th><th>Est. qty</th><th>Status</th><th>Update</th></tr></thead><tbody id="bookingRows"></tbody></table></div>
+      <div class="empty-state" id="emptyBookings">No bookings yet. Submit a test booking from the customer website.</div>
+    </div>
+  </section>
+
+  <footer><div class="brand footer-brand"><span class="brand-mark">↻</span><span><strong>LOCAL SCRAP</strong><small>Khammam doorstep pickup</small></span></div><p>Local Scrap is a provisional project name. Replace it with your registered business name before launch.</p><small>© <span id="year"></span> Local Scrap · Demo website</small></footer>
+
+  <div class="modal-backdrop hidden" id="bookingModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><div><span class="eyebrow">DOORSTEP COLLECTION</span><h2 id="modalTitle">Book a scrap pickup</h2><p>Share a few details. Our team will confirm availability.</p></div><button class="icon-btn" id="closeModal" aria-label="Close">×</button></div>
+      <form id="bookingForm">
+        <div class="form-grid">
+          <label>Full name<input name="name" required maxlength="80" placeholder="Your name"></label>
+          <label>Mobile number<input name="phone" required inputmode="tel" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit mobile number"></label>
+          <label class="full">Pickup address<textarea name="address" required maxlength="400" rows="2" placeholder="House / shop number, street, area, Khammam"></textarea></label>
+          <label>Preferred date<input type="date" name="date" required id="pickupDate"></label>
+          <label>Preferred time<select name="slot" required><option value="">Select a time</option><option>9 AM – 12 PM</option><option>12 PM – 3 PM</option><option>3 PM – 6 PM</option></select></label>
+          <label class="full">Scrap materials <span class="optional">Select all that apply</span><div id="scrapChoices" class="choice-grid"></div></label>
+          <label>Estimated total quantity<select name="quantity" required><option value="">Select quantity</option><option>Below 10 kg</option><option>10–25 kg</option><option>25–50 kg</option><option>50–100 kg</option><option>Above 100 kg</option><option>Not sure</option></select></label>
+          <label>Pickup notes <span class="optional">Optional</span><input name="notes" maxlength="250" placeholder="Any useful details"></label>
+          <label class="full">Scrap photos <span class="optional">Optional · demo stores filenames only</span><input type="file" name="photos" accept="image/*" multiple id="photoInput"></label>
+        </div>
+        <p class="form-note">Submitting this request does not guarantee a pickup slot or a fixed price. The team will contact you to confirm.</p>
+        <button class="btn btn-primary btn-large submit-btn" type="submit">Submit pickup request →</button>
+        <div class="form-error" id="formError" role="alert"></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast hidden" id="toast" role="status"></div>
+  <script src="app.js"></script>
+  <div class="whatsapp-buttons">
+
+    <button
+        class="whatsapp-btn"
+        onclick="orderViaWhatsApp()">
+        <span>💬</span> Order via WhatsApp
+    </button>
+
+    <button
+        class="whatsapp-contact-btn"
+        onclick="contactOwnerWhatsApp()">
+        <span>📞</span> Contact Owner
+    </button>
+
+</div>
+  <!-- Floating WhatsApp Button -->
+<a
+    href="https://wa.me/919652721062"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact Local Scrap on WhatsApp"
+>
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" d="M16 .5A15.4 15.4 0 0 0 2.8 23.8L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5Zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7Zm7-9.5c-.4-.2-2.2-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7.4-.6c.1-.3 0-.5 0-.7l-1.2-2.8c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.3s1.5 3.7 1.7 4c.2.3 2.9 4.4 7 6.2 1 .4 1.8.7 2.4.8 1 .3 1.9.2 2.6.1.8-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5Z"/>
+    </svg>
+</a>
+</body>
+</html>
