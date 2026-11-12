@@ -9,21 +9,20 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Local Scrap home">
+    <a class="brand" href="#home" aria-label="Local Scrap home">
       <span class="brand-mark">↻</span>
       <span><strong>LOCAL SCRAP</strong><small>Khammam doorstep pickup</small></span>
     </a>
-    <nav class="desktop-nav">
-      <a href="#how">How it works</a><a href="#materials">Scrap categories</a><a href="#rates">Indicative rates</a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#materials">Scrap categories</a><a href="#rates">Rates</a><a href="#contact">Contact</a>
     </nav>
     <div class="header-actions">
-      <button class="btn btn-outline" id="adminOpen">Admin</button>
       <button class="btn btn-primary" id="bookTop">Book a pickup</button>
     </div>
   </header>
 
   <main id="customerView">
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="hero-copy">
         <span class="eyebrow">CLEANER KHAMMAM STARTS AT HOME</span>
         <h1>Turn your scrap<br><em>into value.</em></h1>
@@ -50,6 +49,15 @@
       <div><strong>Simple</strong><span>Easy booking</span></div>
       <div><strong>Transparent</strong><span>Final weight & rate shared</span></div>
       <div><strong>Local</strong><span>Khammam collection area</span></div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-copy">
+        <span class="eyebrow">ABOUT LOCAL SCRAP</span>
+        <h2>Making responsible recycling easier in Khammam.</h2>
+        <p>Local Scrap helps households, shops and offices arrange convenient doorstep collection for recyclable materials. The team checks the material, confirms the actual weight and agrees the final rate at pickup.</p>
+      </div>
+      <div class="about-points"><span>✓ Convenient doorstep pickup</span><span>✓ Transparent weighing</span><span>✓ Clear payment confirmation</span></div>
     </section>
 
     <section class="section" id="materials">
@@ -96,7 +104,7 @@
     </div>
   </section>
 
-  <footer><div class="brand footer-brand"><span class="brand-mark">↻</span><span><strong>LOCAL SCRAP</strong><small>Khammam doorstep pickup</small></span></div><p>Local Scrap is a provisional project name. Replace it with your registered business name before launch.</p><small>© <span id="year"></span> Local Scrap · Demo website</small></footer>
+  <footer id="contact"><div class="brand footer-brand"><span class="brand-mark">↻</span><span><strong>LOCAL SCRAP</strong><small>Khammam doorstep pickup</small></span></div><p>Local Scrap is a provisional project name. Replace it with your registered business name before launch.</p><small>© <span id="year"></span> Local Scrap · Demo website</small></footer>
 
   <div class="modal-backdrop hidden" id="bookingModal">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -119,34 +127,30 @@
       </form>
     </div>
   </div>
-  <div class="toast hidden" id="toast" role="status"></div>
-  <script src="app.js"></script>
-  <div class="whatsapp-buttons">
-
-    <button
-        class="whatsapp-btn"
-        onclick="orderViaWhatsApp()">
-        <span>💬</span> Order via WhatsApp
-    </button>
-
-    <button
-        class="whatsapp-contact-btn"
-        onclick="contactOwnerWhatsApp()">
-        <span>📞</span> Contact Owner
-    </button>
-
-</div>
-  <!-- Floating WhatsApp Button -->
+  
+<!-- Floating WhatsApp Button -->
 <a
     href="https://wa.me/919652721062"
     class="floating-whatsapp"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Contact Local Scrap on WhatsApp"
+    title="Contact us on WhatsApp"
 >
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-        <path fill="currentColor" d="M16 .5A15.4 15.4 0 0 0 2.8 23.8L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5Zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7Zm7-9.5c-.4-.2-2.2-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7.4-.6c.1-.3 0-.5 0-.7l-1.2-2.8c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.3s1.5 3.7 1.7 4c.2.3 2.9 4.4 7 6.2 1 .4 1.8.7 2.4.8 1 .3 1.9.2 2.6.1.8-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5Z"/>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        class="whatsapp-icon"
+        aria-hidden="true"
+    >
+        <path
+            fill="currentColor"
+            d="M16 .5A15.4 15.4 0 0 0 2.8 23.8L.5 31.5l8-2.1A15.5 15.5 0 1 0 16 .5Zm0 28.2a12.7 12.7 0 0 1-6.5-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 1 1 16 28.7Zm7-9.5c-.4-.2-2.2-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7.4-.6c.1-.3 0-.5 0-.7l-1.2-2.8c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.3s1.5 3.7 1.7 4c.2.3 2.9 4.4 7 6.2 1 .4 1.8.7 2.4.8 1 .3 1.9.2 2.6.1.8-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5Z"
+        />
     </svg>
 </a>
+>
+  <div class="toast hidden" id="toast" role="status"></div>
+  <script src="app.js"></script>
 </body>
 </html>

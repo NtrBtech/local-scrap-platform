@@ -1,49 +1,3 @@
-// Owner's WhatsApp number
-// Replace this later with the owner's number including country code.
-// Example: 919876543210
-const OWNER_WHATSAPP_NUMBER = "91XXXXXXXXXX";
-
-// Open WhatsApp with a pre-filled message
-function openWhatsApp(message) {
-    const url = `https://wa.me/${919652721062}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
-function orderViaWhatsApp() {
-    const name = document.getElementById("customerName")?.value || "";
-    const phone = document.getElementById("customerPhone")?.value || "";
-    const address = document.getElementById("customerAddress")?.value || "";
-    const quantity = document.getElementById("estimatedQuantity")?.value || "";
-
-    const message = `
-Hello Local Scrap!
-
-I want to book a scrap pickup.
-
-Customer Name: ${name}
-Customer Phone: ${phone}
-Pickup Address: ${address}
-Estimated Quantity: ${quantity}
-
-Please contact me to confirm the pickup.
-
-Thank you.
-    `;
-
-    openWhatsApp(message);
-}
-function contactOwnerWhatsApp() {
-    const message = `
-Hello Local Scrap!
-
-I would like to enquire about your scrap collection service.
-
-Please share the scrap rates and pickup details.
-
-Thank you.
-    `;
-
-    openWhatsApp(message);
-}
 const materials = [
   {name:"Paper & cardboard",icon:"📦",desc:"Newspapers, books, cartons"},
   {name:"Iron & steel",icon:"🔩",desc:"Metal scraps and household items"},
@@ -52,6 +6,7 @@ const materials = [
   {name:"Copper & brass",icon:"🟠",desc:"Wires, pipes and fittings"},
   {name:"E-waste",icon:"💻",desc:"Accepted electronics and cables"}
 ];
+
 // Demo-only sample rates. Replace after confirming actual local buying prices.
 const rates = [
   ["Paper & cardboard","₹8–₹14","kg"],["Iron & steel","₹22–₹30","kg"],
@@ -59,6 +14,9 @@ const rates = [
   ["Copper & brass","₹350–₹650","kg"],["E-waste","On inspection","item / kg"]
 ];
 const $ = s => document.querySelector(s);
+// Replace with the owner's WhatsApp number including country code, digits only.
+// Example: 919876543210 (do not include +, spaces or hyphens).
+const OWNER_WHATSAPP_NUMBER = "919652721062";
 const getBookings = () => { try{return JSON.parse(localStorage.getItem("localScrapBookings")||"[]")}catch{return []} };
 const saveBookings = b => localStorage.setItem("localScrapBookings",JSON.stringify(b));
 $("#year").textContent = new Date().getFullYear();
@@ -83,8 +41,24 @@ $("#bookingForm").addEventListener("submit",e=>{
   const booking={id:"LS"+Date.now().toString().slice(-8),name:data.get("name").trim(),phone,address:data.get("address").trim(),date:data.get("date"),slot:data.get("slot"),materials:selected,quantity:data.get("quantity"),notes:data.get("notes"),photoNames:[...($("#photoInput").files||[])].map(f=>f.name),status:"Pending",createdAt:new Date().toISOString(),paid:0};
   const bookings=getBookings();bookings.unshift(booking);saveBookings(bookings);form.reset();closeModal();toast("Pickup request submitted. Reference: "+booking.id);
 });
-$("#adminOpen").addEventListener("click",()=>{ $("#customerView").classList.add("hidden");$("#adminView").classList.remove("hidden");window.scrollTo(0,0);renderAdmin()});
-$("#backToSite").addEventListener("click",()=>{ $("#adminView").classList.add("hidden");$("#customerView").classList.remove("hidden");window.scrollTo(0,0)});
+// Admin is intentionally omitted from public navigation. For this demo only,
+// the owner can open index.html?admin=1. This is NOT authentication or security.
+function showAdminView(){ $("#customerView").classList.add("hidden");$("#adminView").classList.remove("hidden");window.scrollTo(0,0);renderAdmin() }
+if (new URLSearchParams(window.location.search).get("admin") === "1") showAdminView();
+$("#backToSite").addEventListener("click",()=>{ window.location.href = window.location.pathname; });
+
+// Floating WhatsApp contact button. It stays visible while the page scrolls.
+$("#whatsappButton").addEventListener("click", event => {
+  event.preventDefault();
+  const number = OWNER_WHATSAPP_NUMBER.replace(/\D/g, "");
+  if (!number || number.includes("X") || number.length < 10) {
+    toast("WhatsApp number is not configured yet. Please contact the business by phone.");
+    return;
+  }
+  const message = "Hello Local Scrap! I would like to enquire about scrap collection and current rates in Khammam.";
+  const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+});
 function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function renderAdmin(){
  const b=getBookings();$("#metricBookings").textContent=b.length;$("#metricPending").textContent=b.filter(x=>["Pending","Confirmed","Assigned","On the way"].includes(x.status)).length;$("#metricCollected").textContent=b.filter(x=>["Collected","Payment completed","Closed"].includes(x.status)).length;$("#metricPaid").textContent="₹"+b.reduce((s,x)=>s+(Number(x.paid)||0),0).toLocaleString("en-IN");
@@ -93,3 +67,10 @@ function renderAdmin(){
  document.querySelectorAll(".status-select").forEach(sel=>sel.addEventListener("change",()=>{const all=getBookings();const item=all.find(x=>x.id===sel.dataset.id);if(item){item.status=sel.value;saveBookings(all);renderAdmin();toast("Booking status updated.")}}));
 }
 $("#exportCsv").addEventListener("click",()=>{const b=getBookings();if(!b.length){toast("No bookings to export.");return}const cols=["id","name","phone","address","date","slot","materials","quantity","status","createdAt"];const csv=[cols.join(","),...b.map(x=>cols.map(k=>'"'+String(k==="materials"?x[k].join("; "):x[k]??"").replace(/"/g,'""')+'"').join(","))].join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="local-scrap-bookings.csv";a.click();URL.revokeObjectURL(a.href)});
+
+const whatsappButton = document.getElementById("floatingWhatsApp");
+
+if (whatsappButton) {
+    whatsappButton.href =
+        `https://wa.me/${OWNER_WHATSAPP_NUMBER}`;
+}
