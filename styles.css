@@ -15,3 +15,244 @@
 .floating-whatsapp:hover,.floating-whatsapp:focus-visible{transform:scale(1.1);box-shadow:0 8px 24px #0004;outline:3px solid #25D36655;outline-offset:3px}
 @media(max-width:850px){.about-section{padding:55px 6%;grid-template-columns:1fr;gap:22px}}
 @media(max-width:560px){.about-copy h2{font-size:25px}.about-points{padding:18px;font-size:12px}.floating-whatsapp{width:54px;height:54px;right:16px;bottom:16px}.floating-whatsapp svg{width:30px;height:30px}}
+.whatsapp-float {
+  position: fixed;
+  width: 58px;
+  height: 58px;
+  right: 24px;
+  bottom: 24px;
+  background: #25D366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+/* Customer authentication */
+#authModal .modal {
+  max-width: 480px;
+}
+
+#authModal form {
+  display: grid;
+  gap: 16px;
+}
+
+#authModal label {
+  display: grid;
+  gap: 7px;
+}
+
+#authModal input {
+  width: 100%;
+}
+
+#authModal .form-error {
+  color: #c0392b;
+  margin: 0;
+}
+
+#authModal .text-link {
+  border: 0;
+  background: transparent;
+  color: #126b45;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+
+/* Individual material quantity fields */
+
+.material-option {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #dce7df;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.material-quantity {
+    display: grid;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #315b47;
+}
+
+.material-quantity input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #dce7df;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.material-quantity input:focus {
+    outline: 2px solid #126b45;
+    border-color: #126b45;
+}
+
+.material-quantity.hidden {
+    display: none;
+}
+
+.weighing-details {
+    min-width: 190px;
+}
+
+.weighing-details summary {
+    cursor: pointer;
+    color: #15803d;
+    font-weight: 600;
+    padding: 6px 0;
+}
+
+.weighing-editor {
+    min-width: 220px;
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.weighing-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.weighing-item strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.weighing-item label {
+    display: block;
+    font-size: 13px;
+    margin: 8px 0;
+}
+
+.weighing-item input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+}
+
+.save-weighing-btn {
+    margin-top: 12px;
+    padding: 9px 14px;
+    background: #15803d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-weighing-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.weighing-result {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+
+.payment-details {
+    min-width: 190px;
+}
+
+.payment-details summary {
+    cursor: pointer;
+    color: #15803d;
+    font-weight: 600;
+    padding: 6px 0;
+}
+
+.payment-editor {
+    min-width: 220px;
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.payment-editor p {
+    margin: 7px 0;
+    font-size: 13px;
+}
+
+.payment-editor label {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.payment-editor input,
+.payment-editor select {
+    width: 100%;
+    display: block;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+}
+
+.record-payment-btn {
+    margin-top: 12px;
+    padding: 9px 14px;
+    background: #15803d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.record-payment-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.payment-history {
+    padding: 8px 0;
+    border-top: 1px solid #e2e8f0;
+    font-size: 12px;
+}
+
+
+/* Local Scrap receipt button */
+.receipt-actions {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.view-receipt-btn {
+    background: #126b45;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.view-receipt-btn:hover {
+    background: #0d5235;
+}
